@@ -10,59 +10,58 @@ import java.util.Scanner;
 
 public class Login {
 
-	//File guardado=new File("Usuarios");
-	
+	// File guardado=new File("Usuarios");
+
 	Model modeloda;
 	Scanner sc;
 	String filename = "BaseDeUsuarios.txt";
-	
+
 	public void login() {
-		
+
 		try {
-			Path path= Paths.get(filename.toString());
-			InputStream input=Files.newInputStream(path);
-			BufferedReader reader= new BufferedReader(new InputStreamReader(input));
+			Path path = Paths.get(filename.toString());
+			InputStream input = Files.newInputStream(path);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 			System.out.println("nombre de Usuario");
-			String username= sc.nextLine();
+			String username = sc.nextLine();
 			System.out.println("Contrasena:");
-			String pasword= sc.nextLine();
-			String temp=null;
+			String pasword = sc.nextLine();
+			String temp = null;
 			String user;
 			String pass;
-			boolean found=false;
-			boolean userBoolean=false;
-			boolean passBoolean=false;
-			while((temp=reader.readLine()) !=null) {
+			boolean found = false;
+			boolean userBoolean = false;
+			boolean passBoolean = false;
+			while ((temp = reader.readLine()) != null) {
 				String[] account = temp.split(",");
-				user= account [0];
-				pass= account [1];
-				if(user.equals(username) ) {
-					userBoolean=true;
-					if(pass.equals(pasword)) {
-						passBoolean=true;
-						found=true;
+				user = account[0];
+				pass = account[1];
+				if (user.equals(username)) {
+					userBoolean = true;
+					if (pass.equals(pasword)) {
+						passBoolean = true;
+						found = true;
 					}
 				}
-				if(userBoolean==true) {
-				}else {
+				if (userBoolean == true) {
+				} else {
 					System.out.println("user wrong!");
 				}
-				if(passBoolean==true) {
-				}else {
+				if (passBoolean == true) {
+				} else {
 					System.out.println("password incorrect");
 				}
-				if(found==true) {
+				if (found == true) {
 					System.out.println("granted access");
-				}else {
+				} else {
 					System.out.println("access denied");
 				}
 			}
-			
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			System.out.println("algo");
 		}
-		
+
 	}
-	
+
 }
